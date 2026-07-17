@@ -38,6 +38,12 @@ const Card22_S1 = () => {
       </TouchableOpacity>
 
       {open ? (
+        <View testID="c22-banner" style={s.banner}>
+          <Text style={s.bannerText}>{`📋 ${OPTIONS.length} options loaded — swipe to explore`}</Text>
+        </View>
+      ) : null}
+
+      {open ? (
         <View style={s.listBox}>
           <FlatList
             testID="c22-options"
@@ -92,6 +98,16 @@ const s = StyleSheet.create({
   fieldValue:       { fontSize: FontSize.lg, color: Colors.textPrimary, fontWeight: FontWeight.bold },
   fieldPlaceholder: { fontSize: FontSize.lg, color: Colors.textSecondary },
   chevron:          { fontSize: FontSize.base, color: Colors.textSecondary, marginLeft: Spacing.sm },
+  banner: {
+    backgroundColor: Colors.primary,
+    borderRadius: Radius.lg,
+    padding: Spacing.md,
+    minHeight: 132, // 3× the natural single-line banner height (~44px)
+    marginHorizontal: Spacing.base,
+    marginTop: Spacing.md,
+    justifyContent: 'center',
+  },
+  bannerText:       { fontSize: FontSize.base, color: Colors.white, fontWeight: FontWeight.bold, textAlign: 'center' },
   listBox: {
     flex: 1,
     margin: Spacing.base,
