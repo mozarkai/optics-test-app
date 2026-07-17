@@ -37,4 +37,5 @@ export const CARD_CONFIG: CardConfig[] = [
   { id: 'c19', num: 19, title: 'Combined Scroll',           subtitle: 'Vertical + horizontal gesture handling',     color: '#7d89ff', screen: 'Card19_S1' },
   { id: 'c20', num: 20, title: 'DRM Restricted UI',         subtitle: 'Masked/blocked interactions and overlays',   color: '#8892a0', screen: 'Card20_S1' },
   { id: 'c21', num: 21, title: 'Input Variations',          subtitle: 'All input modes with validation checks',     color: '#a877f0', screen: 'Card21_S1' },
+  { id: 'c22', num: 22, title: 'Long Dropdown',             subtitle: 'Swipe through 100 options to select one',    color: '#5eead4', screen: 'Card22_S1' },
 ];

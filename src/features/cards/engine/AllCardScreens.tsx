@@ -7,13 +7,14 @@ import React from 'react';
 import CardScreen from './CardScreen';
 import SuccessScreen from '../../../components/common/SuccessScreen';
 import { useRoute } from '@react-navigation/native';
-import { Card1S3RouteProp, Card8S3RouteProp } from '../../../navigation/types';
+import { Card1S3RouteProp, Card8S3RouteProp, Card22S2RouteProp } from '../../../navigation/types';
 import * as cfg from './screenConfigs';
 import Card3_S1 from '../card3/Card3_S1';
 import Card5_S1 from '../card5/Card5_S1';
 import Card5_S2 from '../card5/Card5_S2';
 import Card8_S1 from '../card8/Card8_S1';
 import Card8_S2 from '../card8/Card8_S2';
+import Card22_S1 from '../card22/Card22_S1';
 
 const createConfigScreen = (config: typeof cfg[keyof typeof cfg]) => () => <CardScreen config={config} />;
 const createSuccessScreen = (title: string, message: string) => () => (
@@ -112,6 +113,13 @@ export const Card20_S2 = createConfigScreen(cfg.card20_s2);
 export const Card21_S1 = createConfigScreen(cfg.card21_s1);
 export const Card21_S2 = createConfigScreen(cfg.card21_s2);
 
+// ── Card 22 — unique (long dropdown) ─────────────────────────────────────────
+export { Card22_S1 };
+export const Card22_S2 = () => {
+  const { option } = useRoute<Card22S2RouteProp>().params;
+  return <SuccessScreen title="Option Selected!" message={`You picked "${option}" from the long dropdown.`} />;
+};
+
 export const CARD_SCREEN_COMPONENTS = {
   Card1_S1,
   Card1_S2,
@@ -157,4 +165,6 @@ export const CARD_SCREEN_COMPONENTS = {
   Card20_S2,
   Card21_S1,
   Card21_S2,
+  Card22_S1,
+  Card22_S2,
 } as const;
