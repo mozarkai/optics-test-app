@@ -98,6 +98,10 @@ export type RootStackParamList = {
   // ── Card 21 — Input Variations ───────────────────────────────────────────
   Card21_S1: undefined;
   Card21_S2: undefined;
+
+  // ── Card 22 — Long Dropdown ──────────────────────────────────────────────
+  Card22_S1: undefined;
+  Card22_S2: { option: string };
 };
 
 // ── Route prop helpers ────────────────────────────────────────────────────────
@@ -105,3 +109,4 @@ export type TextDetailRouteProp = RouteProp<RootStackParamList, 'TextDetail'>;
 export type Card1S3RouteProp    = RouteProp<RootStackParamList, 'Card1_S3'>;
 export type Card8S2RouteProp    = RouteProp<RootStackParamList, 'Card8_S2'>;
 export type Card8S3RouteProp    = RouteProp<RootStackParamList, 'Card8_S3'>;
+export type Card22S2RouteProp   = RouteProp<RootStackParamList, 'Card22_S2'>;
