@@ -1,11 +1,19 @@
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { getDefaultConfig } = require('expo/metro-config');
 
 /**
- * Metro configuration
- * https://reactnative.dev/docs/metro
- *
- * @type {import('@react-native/metro-config').MetroConfig}
+ * Metro configuration (Expo superset of @react-native/metro-config —
+ * adds web platform support for `expo export`)
+ * https://docs.expo.dev/guides/customizing-metro/
  */
-const config = {};
+const config = getDefaultConfig(__dirname);
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+// react-native-linear-gradient has no web implementation — swap it on web.
+const defaultResolveRequest = config.resolver.resolveRequest;
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (platform === 'web' && moduleName === 'react-native-linear-gradient') {
+    return context.resolveRequest(context, 'react-native-web-linear-gradient', platform);
+  }
+  return (defaultResolveRequest ?? context.resolveRequest)(context, moduleName, platform);
+};
+
+module.exports = config;

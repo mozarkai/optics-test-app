@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 import { Colors, FontSize, Shadows } from '../../theme';
@@ -63,7 +64,15 @@ const cardScreens: CardScreenEntry[] = (Object.entries(CARD_SCREEN_COMPONENTS) a
   });
 
 const HomeStack = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+      // On web, stack cards default to `minHeight: 100%` and delegate scrolling
+      // to document.body, which Expo's template disables — constrain the card
+      // instead so ScrollView/FlatList scroll within the viewport like on native.
+      ...(Platform.OS === 'web' ? { cardStyle: { flex: 1 } } : null),
+    }}
+  >
     <Stack.Screen name="Home" component={HomeScreen} />
 
     {/* Legacy */}
