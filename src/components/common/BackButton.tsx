@@ -27,11 +27,16 @@ const BackButton = ({ label = 'Back', color = '#111', onPress }: BackButtonProps
       activeOpacity={0.6}
       hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
     >
-      <Ionicons
-        name={Platform.OS === 'ios' ? 'chevron-back' : 'arrow-back'}
-        size={26}
-        color={color}
-      />
+      {Platform.OS === 'web' ? (
+        // Icon fonts aren't loaded on web — use a text glyph instead.
+        <Text style={[styles.webArrow, { color }]}>‹</Text>
+      ) : (
+        <Ionicons
+          name={Platform.OS === 'ios' ? 'chevron-back' : 'arrow-back'}
+          size={26}
+          color={color}
+        />
+      )}
       {Platform.OS === 'ios' && (
         <Text style={[styles.label, { color }]}>{label}</Text>
       )}
@@ -50,6 +55,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '500',
     marginLeft: 2,
+  },
+  webArrow: {
+    fontSize: 26,
+    fontWeight: '600',
+    lineHeight: 26,
   },
 });
 

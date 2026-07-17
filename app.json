@@ -1,4 +1,13 @@
 {
   "name": "testStudio",
-  "displayName": "testStudio"
+  "displayName": "testStudio",
+  "expo": {
+    "name": "testStudio",
+    "slug": "teststudio",
+    "platforms": ["web"],
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    }
+  }
 }
